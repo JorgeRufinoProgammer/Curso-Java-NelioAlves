@@ -13,9 +13,10 @@ public class MinhaLista {
 		
 		System.out.println(Util.inputInt("digite o numero")); 
 		
-		while(condicao) {
-			System.out.println("Insira um número:");
-			int numero = sc.nextInt();			
+		while(condicao) {			
+			//System.out.println("Insira um número:");
+			//int numero = sc.nextInt();
+			int numero = Util.inputInt("digite o numero");	//Abre um Input e converte para Int
 			if (numero == 0) {
 				condicao = false;
 			}
