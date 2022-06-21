@@ -10,13 +10,11 @@ public class MinhaLista {
 		Scanner sc = new Scanner(System.in);
 		boolean condicao = true;
 		List<Integer> lista = new ArrayList<>();
-		
-		System.out.println(Util.inputInt("digite o numero")); 
-		
+				
 		while(condicao) {			
 			//System.out.println("Insira um número:");
 			//int numero = sc.nextInt();
-			int numero = Util.inputInt("digite o numero");	//Abre um Input e converte para Int
+			int numero = Util.inputInt("Insira um numero");	//Abre um Input e converte para Int
 			if (numero == 0) {
 				condicao = false;
 			}
