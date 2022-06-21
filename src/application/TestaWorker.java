@@ -16,7 +16,8 @@ public class TestaWorker {
 	public static void main(String[] args) throws ParseException {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		//este objeto serve tanto para passar a Data(parse()) e quanto para recupera-la (format())
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");	
 		
 		System.out.print("Enter department's name:");
 		//String departmentName = sc.next();					
@@ -53,11 +54,18 @@ public class TestaWorker {
 		System.out.println();
 		System.out.print("Enter month and year to calculate income (MM/YYYY):");
 		String monthYear= sc.next();
-		int month = Integer.parseInt(monthYear.substring(0, 2));
-		int year = Integer.parseInt(monthYear.substring(3));
+		int month = Integer.parseInt(monthYear.substring(0, 2)); //pega da posicao 0 até antes da posiçao 2 => [0,2[
+		int year = Integer.parseInt(monthYear.substring(3));	//pega a partir da posiçao 3 em diante		=> 3]
 		System.out.print("Worker name: "+ worker.getName());
-		System.out.print("\nDepartment: "+ worker.getDepartment().getName());
-		System.out.print("\nIncome for "+ monthYear +": "+ String.format("%.2f", worker.income(month, year)));
+		System.out.print("\nDepartment: "+ worker.getDepartment().getName());//Como "getDepartment" retorna um objeto, chamamos o metodo atraves dele
+		
+		double income = worker.income(month, year);
+		if (income == worker.getBaseSalary()) {
+			System.out.println("\nWorker not contracts, receveid just base salary: " + String.format("%.2f",worker.getBaseSalary()));
+		}
+		else {
+			System.out.print("\nIncome for "+ monthYear +": "+ String.format("%.2f", worker.income(month, year)));
+		}
 		
 		System.out.println();
 		System.out.println();	//INSERI O CODIGO ABAIXO PARA MOSTRAR OS CONTRATOS DO TRABALHADOR
