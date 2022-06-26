@@ -46,7 +46,18 @@ public class TestaContribuinte {
 		System.out.println("Impostos a Pagar por Contribuinte:");
 		double soma = 0.0;
 		for (Contribuinte contribuinte : listaContribuinte) {
-			System.out.println(contribuinte);
+			if (contribuinte instanceof PessoaFisica) {
+				PessoaFisica pf = (PessoaFisica)contribuinte;
+				System.out.println(contribuinte +", gastos com saúde: " + String.format("%.2f", pf.getGastosSaude()));
+			}
+			
+			if (contribuinte instanceof PessoaJuridica) {
+				PessoaJuridica pj = (PessoaJuridica)contribuinte;
+				System.out.println(contribuinte +", quantidade de funcionarios: " + pj.getQuantFuncionarios());
+			}
+			
+		//System.out.println(contribuinte.getNome()+": $"	+String.format("%.2f", contribuinte.impostoPagar())); Esta linha está no toString()
+			
 			soma += contribuinte.impostoPagar();
 		}
 		System.out.println("Total de Impostos a Pagar: $" + String.format("%.2f", soma));
