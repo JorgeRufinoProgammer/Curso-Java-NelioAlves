@@ -33,16 +33,12 @@ public class TestaReservation {
 			check_in = sdf.parse(sc.next()); 
 			System.out.print("Check-out date:");
 			check_out = sdf.parse(sc.next());
-			
-			Date now = new Date();	//data de "agora"
-			if (check_in.before(now) || check_out.before(now)) {//Metodo before verificar se a data é antes 
-				System.out.println("Error in reservation: Reservation dates for update must be future dates");
-			}
-			else if (check_in.after(check_out)) { //Objetos Date tem o metodo after que compara se uma data é depois da outra 
-				System.out.println("Error in reservation: Check-out date must be after check-in date");				
+				
+			String error = reserva.updateDates(check_in, check_out);
+			if (error != null) {
+				System.out.println(error);
 			}
 			else {
-				reserva.updateDates(check_in, check_out);
 				System.out.println(reserva);
 			}
 		}

@@ -22,9 +22,17 @@ public class Reservation {
 		return TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS); //Converte a diferença que estava em miliseg. para Dias
 	}
 	
-	public void updateDates(Date checkin, Date checkout) {
+	public String updateDates(Date checkin, Date checkout) {	//Lembrando que o "return" pára a execução do método e gera o retorno
+		Date now = new Date();	//data de "agora"
+		if (checkin.before(now) || checkout.before(now)) {//Metodo before verificar se a data é antes 
+			return "Error in reservation: Reservation dates for update must be future dates";
+		}
+		if (checkin.after(checkout)) { //Objetos Date tem o metodo after que compara se uma data é depois da outra 
+			return "Error in reservation: Check-out date must be after check-in date";				
+		}		
 		this.checkin = checkin;
 		this.checkout = checkout;
+		return null;			//Retornar "Null" quer dizer que não teve erros/exceções
 	}
 	
 	@Override
