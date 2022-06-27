@@ -10,7 +10,7 @@ public class Account {
 	public Account(Integer number, String holder, Double balance) {		
 		this.number = number;
 		this.holder = holder;
-		this.balance = balance;
+		this.balance = balance;		
 	}
 
 	public void withdraw(double amount) {
