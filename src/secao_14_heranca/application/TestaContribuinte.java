@@ -45,13 +45,13 @@ public class TestaContribuinte {
 		System.out.println();
 		System.out.println("Impostos a Pagar por Contribuinte:");
 		double soma = 0.0;
-		for (Contribuinte contribuinte : listaContribuinte) {
+		for (Contribuinte contribuinte : listaContribuinte) {	//Verifica se o objeto da lista é um objeto/instancia da subclasse PessoaFisica
 			if (contribuinte instanceof PessoaFisica) {
 				PessoaFisica pf = (PessoaFisica)contribuinte;
 				System.out.println(contribuinte +", gastos com saúde: " + String.format("%.2f", pf.getGastosSaude()));
 			}
 			
-			if (contribuinte instanceof PessoaJuridica) {
+			if (contribuinte instanceof PessoaJuridica) {		//Verifica se o objeto da lista é um objeto/instancia da subclasse PessoaJuridica
 				PessoaJuridica pj = (PessoaJuridica)contribuinte;
 				System.out.println(contribuinte +", quantidade de funcionarios: " + pj.getQuantFuncionarios());
 			}
