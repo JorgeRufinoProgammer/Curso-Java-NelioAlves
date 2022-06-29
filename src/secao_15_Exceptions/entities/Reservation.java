@@ -14,11 +14,7 @@ public class Reservation {
 	public Reservation() {}
 
 	public Reservation(Integer roomNumber, Date checkin, Date checkout) throws DomainException {		
-		if (checkin.after(checkout)) { //Objetos Date tem o metodo after que compara se uma data é depois da outra
-			
-			//Lança a exceçao que foi criada na classe DomainException
-			throw new DomainException("Error in reservation: Check-out date must be after check-in date");				
-		}	
+		updateDates(checkin, checkout);
 		this.roomNumber = roomNumber;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -30,8 +26,14 @@ public class Reservation {
 	}
 	
 	public void updateDates(Date checkin, Date checkout) throws DomainException {	//Lembrando que o "return" pára a execução do método e gera o retorno
-		Date now = new Date();								//data de "agora"
-		if (checkin.before(now) || checkout.before(now)) {//Metodo before verificar se a data é antes
+		
+		Date now = new Date();	//Data e Horario no momento de execuçao do metodo
+		if (sdf.format(now).equals(sdf.format(checkin))) {	//Verifica se as datas (dd/MM/yyyy) são iguais			
+			if (checkin.equals(checkout)) {
+				throw new DomainException("Datas de check-in and check-out are equals!");
+			}
+		}
+		else if (checkin.before(now) || checkout.before(now)) {//Metodo before verificar se a data é antes
 			
 			//Lança a exceçao que foi criada na classe DomainException
 			throw new DomainException("Error in reservation: Reservation dates for update must be future dates");
@@ -39,8 +41,9 @@ public class Reservation {
 		if (checkin.after(checkout)) { //Objetos Date tem o metodo after que compara se uma data é depois da outra
 			
 			//Lança a exceçao que foi criada na classe DomainException
-			throw new DomainException("Error in reservation: Check-out date must be after check-in date");				
-		}		
+			throw new DomainException("Error in reservation: Check-out date must be after check-in date");
+		}
+		
 		this.checkin = checkin;
 		this.checkout = checkout;
 	}

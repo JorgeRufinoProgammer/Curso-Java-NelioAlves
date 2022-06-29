@@ -44,7 +44,7 @@ public class TestaReservation {
 			System.out.println(e.getMessage());
 		}
 		catch (InputMismatchException e) {	//Captura erros de entrada de dados diferente do esperado
-			System.out.println("Erro do entrada de dados!");
+			System.out.println("Erro de entrada de dados!");
 		}
 		catch (RuntimeException e) {		//Captura erros genericos
 			System.out.println("Erro inesperado!");
