@@ -20,12 +20,11 @@ public class TestaEmpresaMelhorada {
 		Scanner sc = new Scanner(System.in);
 		Empresa empresa = new Empresa();
 		
-		try {
+		try {				//Lista de Opções do Painel
 			String painel = "1 - Nome da Empresa\n2 - Cnpj da Empresa\n3 - Adicionar Departamento\n4 - Adicionar Funcionario"
-					+ "\n5 - Motras dados da Empresa\n6 - Mostrar lista de Departamentos\n7 - Mostrar lista de Funcionarios"
-					+ "\n8 Sair do sistema";
+					+ "\n5 - Mostrar lista de Departamentos\n6 - Mostrar lista de Funcionarios\n7 - Mostrar dados da Empresa";
 			int opcao = Integer.parseInt(JOptionPane.showInputDialog(painel));
-			while(opcao != 0) {
+			while(opcao != 0) {			//0 Fecha o programa
 				if (opcao == 1) {
 					if (empresa.getNome() == null) {	
 						System.out.println("Qual o nome da Empresa?");
@@ -84,29 +83,8 @@ public class TestaEmpresaMelhorada {
 							}
 						}
 					}
-				}
-				if (opcao == 5) {
-					System.out.println();
-					
-					System.out.println("Dados da empresa:");
-					System.out.println("Nome: " + empresa.getNome() + " - Cnpj: "+ empresa.getCnpj());
-					//System.out.println("Departamentos:");
-					System.out.println();
-					for (Departamentos departamentos : empresa.getDepartamentos()) {
-						System.out.println("Departamento de "+departamentos.getNome());
-						System.out.println("Lista de funcionarios:");			
-						for (Funcionario funcionarios : departamentos.getFuncionarios()) {
-							if (funcionarios.getDepartamento().getNome().equals("Informatica")) {	//Aumenta salario em 10% para o departamento de Informatica
-								funcionarios.aumentaSalario(10.0);
-							}
-							
-							System.out.println("Nome do Funcionario: "+ funcionarios.getNome()
-							+"\nSalario: "+funcionarios.getSalario() + "\nData de admissão: " + sdf.format(funcionarios.getDataAdmissao()));
-						}
-						System.out.println();
-					}
-				}
-				if(opcao == 6) {
+				}				
+				if(opcao == 5) {
 					if (empresa.getDepartamentos().size() == 0) {
 						JOptionPane.showMessageDialog(null, "Ainda não foram cadastrados departamentos!");
 					}
@@ -119,11 +97,11 @@ public class TestaEmpresaMelhorada {
 					}
 					
 				}
-				if(opcao == 7) {					
-					if(empresa.getDepartamentos().size() == 0) {
-						JOptionPane.showMessageDialog(null, "1-Ainda não foram cadastrados funcionarios!");
+				if(opcao == 6) {					
+					if(empresa.getDepartamentos().size() == 0 || !existeFuncionario(empresa.getDepartamentos())) {
+						JOptionPane.showMessageDialog(null, "Ainda não foram cadastrados funcionarios!");
 					}
-					else if (existeFuncionario(empresa.getDepartamentos())){			
+					else {			
 						System.out.println();
 						System.out.println("Lista de Funcionarios:");
 						for (Departamentos departamentos : empresa.getDepartamentos()) {							
@@ -134,16 +112,28 @@ public class TestaEmpresaMelhorada {
 								System.out.println();
 							}
 						}
-					}
-					else {
-						JOptionPane.showMessageDialog(null, "2-Ainda não foram cadastrados funcionarios!");
-					}
+					}					
 				}
-				if (opcao == 8) {
-					JOptionPane.showMessageDialog(null, "Fechando sistema");
-					System.exit(0);					
+				if (opcao == 7) {
+					System.out.println();					
+					System.out.println("Dados da empresa: \nNome: " + empresa.getNome() + " - Cnpj: "+ empresa.getCnpj()+"\n");					
+					for (Departamentos departamentos : empresa.getDepartamentos()) {
+						System.out.println("Departamento de "+departamentos.getNome());
+						System.out.println("Lista de funcionarios:");			
+						for (Funcionario funcionarios : departamentos.getFuncionarios()) {
+							if (funcionarios.getDepartamento().getNome().equals("Informatica")) {	//Aumenta salario em 10% para o departamento de Informatica
+								funcionarios.aumentaSalario(10.0);
+							}
+							System.out.println("Nome: "+ funcionarios.getNome()
+							+"\nSalario: "+funcionarios.getSalario() + "\nData de admissão: " + sdf.format(funcionarios.getDataAdmissao()));
+						}
+						System.out.println();
+					}
 				}
 				
+				if (opcao > 9 )	{
+					JOptionPane.showMessageDialog(null, "Opçao inválida! Tente novamente!");
+				}
 				opcao = Integer.parseInt(JOptionPane.showInputDialog(painel));
 			}
 		}

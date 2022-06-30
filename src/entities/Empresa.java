@@ -20,6 +20,10 @@ public class Empresa {
 		departamentos.add(departamento);
 	}
 	
+	public void removeDepartamento (Departamentos departamento) {
+		departamentos.remove(departamento);
+	}
+	
 	public String getNome() {
 		return nome;
 	}
