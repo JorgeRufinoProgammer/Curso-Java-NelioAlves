@@ -32,6 +32,13 @@ public class TestaAccount {
 			
 			account.withdraw(amout);
 			System.out.println("New balance: "+String.format("%.2f", account.getBalance()));
+			
+			System.out.println();
+			System.out.print("Enter amount for withdraw:");
+			amout = sc.nextDouble();
+			
+			account.withdraw(amout);
+			System.out.println("New balance: "+String.format("%.2f", account.getBalance()));
 		}
 		catch (DomainException e) {
 			System.out.println(e.getMessage());
