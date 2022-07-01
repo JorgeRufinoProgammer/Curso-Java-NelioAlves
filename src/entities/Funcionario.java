@@ -1,8 +1,10 @@
 package entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Funcionario {	
+public class Funcionario {
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private String nome;
 	private Double salario;
 	private Date dataAdmissao;
@@ -19,6 +21,11 @@ public class Funcionario {
 		this.departamento = departamento;
 	}
 	
+	@Override
+	public String toString() {
+		return "Nome: "+ nome + ", Departamento: " + departamento.getNome()+ ", Salario: R$" + String.format("%.2f", salario)
+		+ ", Data de admissão: " + sdf.format(dataAdmissao);
+	}
 	public void aumentaSalario(double valor) {	//recebe a porcentagem de aumento
 		salario += salario * valor / 100;
 	}
