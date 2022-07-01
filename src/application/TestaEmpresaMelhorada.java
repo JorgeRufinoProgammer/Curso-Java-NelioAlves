@@ -20,8 +20,8 @@ public class TestaEmpresaMelhorada {
 		int opcao = 0;
 		boolean condicaoPainel = true;
 														//Lista de Opções do Painel
-			String painel = "1 - Nome da Empresa\n2 - Cnpj da Empresa\n3 - Adicionar Departamento\n4 - Adicionar Funcionario"
-					+ "\n5 - Mostrar lista de Departamentos\n6 - Mostrar lista de Funcionarios\n7 - Mostrar dados da Empresa"
+			String painel = "1 - Nome da Empresa\n2 - Cnpj da Empresa\n3 - Mostrar dados da Empresa\n4 - Adicionar Departamento"
+					+ "\n5 - Adicionar Funcionario\n6 - Mostrar lista de Departamentos\n7 - Mostrar lista de Funcionarios"
 					+ "\n0 - Sair";
 
 			do{							//Utilizei o DO-WHILE pois o painel precisa ser executado pelo menos uma vez								
@@ -44,18 +44,21 @@ public class TestaEmpresaMelhorada {
 						cnpjEmpresa(empresa);
 					}break;
 					case 3:{
-						addDepartamento(empresa);		
+						dadosEmpresa(empresa);
 					}break;
 					case 4:{
-						addFuncionario(empresa);
+						addDepartamento(empresa);		
 					}break;
 					case 5:{
-						listadeDepartamentos(empresa);
+						addFuncionario(empresa);
 					}break;
 					case 6:{
-						listadeFuncionarios(empresa);
+						listadeDepartamentos(empresa);
 					}break;
 					case 7:{
+						listadeFuncionarios(empresa);
+					}break;
+					case 8:{
 						dadosEmpresa(empresa);
 					}break;					
 					default:
