@@ -1,6 +1,8 @@
 package secao_18_Interfaces.services;
 
-public class BrazilTaxService {
+import secao_18_Interfaces.interfaces.TaxService;
+
+public class BrazilTaxService implements TaxService {
 	public double tax(double amount) {		
 		if (amount < 100.0) {
 			return amount * 0.2;

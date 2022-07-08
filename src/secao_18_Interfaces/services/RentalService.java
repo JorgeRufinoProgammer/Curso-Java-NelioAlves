@@ -2,14 +2,15 @@ package secao_18_Interfaces.services;
 
 import secao_18_Interfaces.entities.CarRental;
 import secao_18_Interfaces.entities.Invoice_Nota;
+import secao_18_Interfaces.interfaces.TaxService;
 
 public class RentalService {
 	private Double pricePerDay;
 	private Double pricePerHour;
 	
-	private BrazilTaxService taxService;
+	private TaxService taxService;
 
-	public RentalService(Double pricePerDay, Double pricePerHour, BrazilTaxService taxService) {		
+	public RentalService(Double pricePerDay, Double pricePerHour, TaxService taxService) {		
 		this.pricePerDay = pricePerDay;
 		this.pricePerHour = pricePerHour;
 		this.taxService = taxService;
@@ -49,11 +50,11 @@ public class RentalService {
 		this.pricePerHour = pricePerHour;
 	}
 
-	public BrazilTaxService getTaxService() {
+	public TaxService getTaxService() {
 		return taxService;
 	}
 
-	public void setTaxService(BrazilTaxService taxService) {
+	public void setTaxService(TaxService taxService) {
 		this.taxService = taxService;
 	}
 		
