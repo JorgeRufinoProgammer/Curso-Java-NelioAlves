@@ -1,28 +1,38 @@
 package secao_18_Interfaces.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ParcelaContrato {
-	private int quantidadeParcelas;
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private Date dataParcela;
 	private double valorParcela;
 	
-	public ParcelaContrato(int quantidadeParcelas) {		
-		this.quantidadeParcelas = quantidadeParcelas;		
+	public ParcelaContrato() {}
+
+	public ParcelaContrato(Date dataParcela, double valorParcela) {		
+		this.dataParcela = dataParcela;
+		this.valorParcela = valorParcela;
 	}
 
-	public int getQuantidadeParcelas() {
-		return quantidadeParcelas;
+	public Date getDataParcela() {
+		return dataParcela;
 	}
 
-	public void setQuantidadeParcelas(int quantidadeParcelas) {
-		this.quantidadeParcelas = quantidadeParcelas;
+	public void setDataParcela(Date dataParcela) {
+		this.dataParcela = dataParcela;
 	}
 
-	public double getValorParcela() {				
+	public double getValorParcela() {
 		return valorParcela;
 	}
 
-	public void setValorParcela(double valorContrato, int numeroParcela) {
-		double valorBase = valorContrato / quantidadeParcelas;
-		valorParcela = valorBase +  valorBase * 0.01 * numeroParcela;	
+	public void setValorParcela(double valorParcela) {
+		this.valorParcela = valorParcela;
+	}	
+	
+	@Override
+	public String toString() {
+		return sdf.format(dataParcela) + " - R$" + String.format("%.2f", valorParcela)  ;
 	}
-		
 }

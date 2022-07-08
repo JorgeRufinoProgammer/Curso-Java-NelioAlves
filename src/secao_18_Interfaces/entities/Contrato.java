@@ -9,14 +9,13 @@ public class Contrato {
 	private Date data;
 	private Double valor;
 	
-	private List<ParcelaContrato> parcelaContrato;
+	private List<ParcelaContrato> parcelaContrato = new ArrayList<>();
 	public Contrato() {}
 
 	public Contrato(int numero, Date data, Double valor) {		
 		this.numero = numero;
 		this.data = data;
-		this.valor = valor;
-		parcelaContrato = new ArrayList<>();
+		this.valor = valor;		
 	}
 
 	public void addParcela(ParcelaContrato parcelaContrato) {
