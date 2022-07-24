@@ -1,5 +1,8 @@
 package application;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.JOptionPane;
 
 public class Util {
@@ -12,7 +15,7 @@ public class Util {
 	public static int inputInt(String texto) {
 		String somenteNumero = JOptionPane.showInputDialog(texto);
 		while(OnlyNumbers(somenteNumero)) {
-			outputString("Digite apenas números!");
+			output("Digite apenas nï¿½meros!");
 			somenteNumero = JOptionPane.showInputDialog(texto);
 		}
 		int i = Integer.parseInt(somenteNumero);
@@ -23,7 +26,7 @@ public class Util {
 	public static double inputDouble(String texto) {
 		String somenteNumero = JOptionPane.showInputDialog(texto);
 		while(OnlyNumbers(somenteNumero)) {
-			outputString("Digite apenas números!");
+			output("Digite apenas nï¿½meros!");
 			somenteNumero = JOptionPane.showInputDialog(texto);
 		}
 		double i = Double.parseDouble(somenteNumero);
@@ -32,20 +35,40 @@ public class Util {
 		return i;
 	}
 	
-	public static void outputString (String texto) {
-		System.out.println(texto);
-		JOptionPane.showMessageDialog(null, texto);
+	public static void output (Object object) {
+		System.out.println(object);
+		JOptionPane.showMessageDialog(null, object);
+	}
+	public static void output (Object object, int mostrarConsole) {
+		if (mostrarConsole == 1) {
+			System.out.println(object);
+		}
+		
+		JOptionPane.showMessageDialog(null, object);
+	}
+	
+	public static void outputAlerta (Object object, int mostrarConsole) {
+		if (mostrarConsole == 1) {
+			System.out.println(object);
+		}
+		
+		JOptionPane.showMessageDialog(null, object, "AtenÃ§Ã£o", 2);
+	}
+	
+	public static String dataHoraAtual() {
+		String data = ""+LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+		return data.substring(0,10) + " - " + data.substring(11, 19);
 	}
 	
 	public static boolean OnlyText(String text) {
-	    return ! text.matches("[^\\d]+"); //Passa para o método matches a regex
-	    //Se tiver número na string irá retornar "falso", por isso o uso de "!" para retornar "true"
-	    //Note o uso de duas \\, uma sendo obrigatória para servir de caractere de escape
+	    return ! text.matches("[^\\d]+"); //Passa para o mï¿½todo matches a regex
+	    //Se tiver nï¿½mero na string irï¿½ retornar "falso", por isso o uso de "!" para retornar "true"
+	    //Note o uso de duas \\, uma sendo obrigatï¿½ria para servir de caractere de escape
 	}
 	
 	public static boolean OnlyNumbers(String text) {
-	    return ! text.matches("[^a-zA-Z]+"); //Passa para o método matches a regex
-	    //Se tiver letras na string irá retornar "falso", por isso o uso de "!" para retornar "true"
-	    //Note o uso de duas \\, uma sendo obrigatória para servir de caractere de escape
+	    return ! text.matches("[^a-zA-Z]+"); //Passa para o mï¿½todo matches a regex
+	    //Se tiver letras na string irï¿½ retornar "falso", por isso o uso de "!" para retornar "true"
+	    //Note o uso de duas \\, uma sendo obrigatï¿½ria para servir de caractere de escape
 	}
 }
